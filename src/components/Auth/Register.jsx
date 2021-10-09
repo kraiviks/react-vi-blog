@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {NavLink, Redirect} from "react-router-dom";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {getAuth} from "firebase/auth";
+import {db} from '../../firebase';
 
 function Copyright(props) {
   return (
@@ -38,6 +42,13 @@ export default function Register() {
       password: data.get('password'),
     });
   };
+
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth)
+
+  if (user) {
+    return <Redirect to='/posts' />
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -118,9 +129,7 @@ export default function Register() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                <NavLink to='/login' variant="body2">Already have an account? Sign in</NavLink>
               </Grid>
             </Grid>
           </Box>
