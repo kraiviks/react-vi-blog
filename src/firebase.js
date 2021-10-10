@@ -9,5 +9,5 @@ const fireApp = initializeApp({
     messagingSenderId: "962128581928",
     appId: "1:962128581928:web:7120e944c4d21774c9ac1d",
 });
-
+export {fireApp};
 export default getFirestore();

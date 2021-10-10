@@ -9,20 +9,23 @@ import {
 	Typography,
 } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
+import ArticleIcon from '@mui/icons-material/Article';
+import HomeIcon from '@mui/icons-material/Home';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import React, {useState} from "react";
 import {getAuth, signOut} from "firebase/auth";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {NavLink} from "react-router-dom";
+import Link from "@mui/material/Link";
 
 
-const LeftDrawer = ({openDrawer, closeDrawer, setOpenDialogAddItem}) => {
-	const [themeMode, setThemeMode] = useState(false);
+const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStorage}) => {
 	const auth = getAuth();
 	const [user, loading, error] = useAuthState(auth);
 
 	const drawerWidth = 240;
+
 
 	return (
 		<Drawer
@@ -44,17 +47,15 @@ const LeftDrawer = ({openDrawer, closeDrawer, setOpenDialogAddItem}) => {
 			<List>
 				<ListItem button>
 					<ListItemIcon>
-						<AccountBox/>
+						<HomeIcon/>
 					</ListItemIcon>
-					<NavLink to='/'>
-						Home
-					</NavLink>
+					<Link color="inherit" underline="none" component={NavLink} to='/' sx={{width: '100%'}}><ListItemText primary={'Home'}/></Link>
 				</ListItem>
 				<ListItem button>
 					<ListItemIcon>
-						<AccountBox/>
+						<ArticleIcon/>
 					</ListItemIcon>
-					<NavLink to='/posts'>Posts</NavLink>
+					<Link color="inherit" underline="none" component={NavLink} to='/posts' sx={{width: '100%'}}><ListItemText primary={'Posts'}/></Link>
 				</ListItem>
 				{user ? (<ListItem button>
 					<ListItemIcon>
@@ -63,13 +64,13 @@ const LeftDrawer = ({openDrawer, closeDrawer, setOpenDialogAddItem}) => {
 					<ListItemText primary={'Профиль'}/>
 				</ListItem>) : null}
 				{!themeMode ?
-					(<ListItem button onClick={()=> setThemeMode(true)}>
+					(<ListItem button onClick={handleThemeToLocalStorage}>
 						<ListItemIcon>
 							<DarkModeIcon/>
 						</ListItemIcon>
 						<ListItemText primary={'Dark mode'}/>
 					</ListItem>) :
-					(<ListItem button onClick={()=> setThemeMode(false)}>
+					(<ListItem button onClick={handleThemeToLocalStorage}>
 					<ListItemIcon>
 						<LightModeIcon/>
 					</ListItemIcon>
@@ -84,7 +85,7 @@ const LeftDrawer = ({openDrawer, closeDrawer, setOpenDialogAddItem}) => {
 					<ListItemIcon>
 						<AccountBox/>
 					</ListItemIcon>
-					<NavLink to='/login' variant="body2">Log in</NavLink>
+					<Link color="inherit" underline="none" component={NavLink} to='/login' sx={{width: '100%'}}><ListItemText primary={'Log in'}/></Link>
 				</ListItem>)}
 			</List>
 		</Drawer>

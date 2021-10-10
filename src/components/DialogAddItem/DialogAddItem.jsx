@@ -26,7 +26,8 @@ const DialogAddItem = ({ openDialogAddItem, closeDialogAddItem }) => {
 	const addPost =  async () => {
 		await addDoc(collection(db, "posts"), {
 			title,
-			content
+			content,
+			createdAt: new Date(),
 		});
 		closeDialogAddItem();
 	}
