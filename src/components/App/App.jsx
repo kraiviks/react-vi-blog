@@ -65,6 +65,8 @@ const App = () => {
 			mode: localStorage.getItem('theme') === 'false' ? 'light' : 'dark'
 		},
 	});
+
+	console.log(user);
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="app">
@@ -90,17 +92,19 @@ const App = () => {
 									</Grid>)
 								}
 							</Grid>
-							<Fab
-								color="primary"
-								aria-label="add"
-								sx={{position: "fixed", bottom: "5%", right: "10%"}}
-								onClick={() => setOpenDialogAddItem(true)}
-							>
-								<AddIcon/>
-							</Fab>
+							{user ? (
+								<Fab
+									color="primary"
+									aria-label="add"
+									sx={{position: "fixed", bottom: "5%", right: "10%"}}
+									onClick={() => setOpenDialogAddItem(true)}
+								>
+									<AddIcon/>
+								</Fab>
+							) : null}
 						</Route>
 						<Route exact path="/post/:id"
-							   render={({match}) => (<FullPost post={data.find(p => p.id === match.params.id)}/>)}/>
+							   render={({match}) => (<FullPost user={user} post={data.find(p => p.id === match.params.id)}/>)}/>
 						<Route path="/login">
 							<Login/>
 						</Route>

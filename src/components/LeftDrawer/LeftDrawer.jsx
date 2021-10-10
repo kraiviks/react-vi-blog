@@ -61,7 +61,7 @@ const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStora
 					<ListItemIcon>
 						<AccountBox/>
 					</ListItemIcon>
-					<ListItemText primary={'Профиль'}/>
+					<Link color="inherit" underline="none" component={NavLink} to='/profile' sx={{width: '100%'}}><ListItemText primary={'Профиль'}/></Link>
 				</ListItem>) : null}
 				{!themeMode ?
 					(<ListItem button onClick={handleThemeToLocalStorage}>

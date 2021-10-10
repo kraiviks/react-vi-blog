@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
+import Avatar from "@mui/material/Avatar";
 
 const Header = ({setOpenDrawer}) => {
 
@@ -53,7 +54,10 @@ const Header = ({setOpenDrawer}) => {
 						) : null}
 					</nav>
 					{user ?
-						<Typography variant='h5' component='div' sx={{ml: 5}}>{user.displayName}</Typography> : null}
+						(<Box sx={{display: 'flex', alignItems:'center'}}>
+							<Typography variant='h5' component='div' sx={{ml: 5}}>{user.displayName}</Typography>
+							<Avatar alt="Remy Sharp" src={user.photoURL} sx={{ml: 5}}/>
+						</Box>) : null}
 				</Toolbar>
 			</AppBar>
 		</Box>
