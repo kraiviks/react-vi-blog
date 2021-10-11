@@ -7,11 +7,11 @@ import {
 	FormControl,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import React, { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import db from '../../firebase';
+import React, {useState} from "react";
+import { addDoc, collection,} from "firebase/firestore";
+import db from '../firebase';
 
-const DialogAddItem = ({ openDialogAddItem, closeDialogAddItem }) => {
+const DialogAddItem = ({openDialogAddItem, closeDialogAddItem, user}) => {
 
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
@@ -23,12 +23,14 @@ const DialogAddItem = ({ openDialogAddItem, closeDialogAddItem }) => {
 		setContent(e.target.value)
 	}
 
-	const addPost =  async () => {
-		await addDoc(collection(db, "posts"), {
-			title,
-			content,
-			createdAt: new Date(),
-		});
+	const addPost = async () => {
+		await addDoc(collection(db, 'posts'),
+			{
+				title,
+				content,
+				createdAt: new Date(),
+			}
+		)
 		closeDialogAddItem();
 	}
 
@@ -41,7 +43,7 @@ const DialogAddItem = ({ openDialogAddItem, closeDialogAddItem }) => {
 						fullWidth
 						label="Title"
 						id="fullWidth"
-						sx={{ mt: 3 }}
+						sx={{mt: 3}}
 						onChange={handleTitle}
 						value={title}
 					/>
@@ -52,7 +54,7 @@ const DialogAddItem = ({ openDialogAddItem, closeDialogAddItem }) => {
 						rows={10}
 						sx={{
 							width: 250,
-							minWidth: { xs: 250, md: 500 },
+							minWidth: {xs: 250, md: 500},
 							mt: 3,
 							mb: 3,
 						}}
@@ -64,8 +66,8 @@ const DialogAddItem = ({ openDialogAddItem, closeDialogAddItem }) => {
 				</FormControl>
 				<Button
 					variant="contained"
-					endIcon={<SendIcon />}
-					sx={{ mt: 3 }}
+					endIcon={<SendIcon/>}
+					sx={{mt: 3}}
 					onClick={addPost}
 				>
 					Add

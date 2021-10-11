@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import {NavLink, Redirect} from "react-router-dom";
 import {useAuthState} from "react-firebase-hooks/auth";
+import db from "../../firebase";
 
 function Copyright(props) {
 	return (
@@ -41,25 +42,18 @@ export default function Login() {
 	const auth = getAuth();
 	const [user, loading, error] = useAuthState(auth)
 
-	const login = async () => {
-
-	}
+	// const loginWithEmail = async () => {
+	//
+	// }
 
 	const loginWithGoogle = async () => {
 		signInWithPopup(auth, provider)
 			.then((result) => {
-				// This gives you a Google Access Token. You can use it to access the Google API.
-				const credential =
-					GoogleAuthProvider.credentialFromResult(result);
-				const token = credential.accessToken;
-				// The signed-in user info.
-				const user = result.user;
+				// res
 			})
 			.catch((error) => {
 				console.log(error)
 			});
-
-
 	};
 
 	const handleSubmit = (event) => {
@@ -131,7 +125,7 @@ export default function Login() {
 							fullWidth
 							variant="contained"
 							sx={{ mt: 3, mb: 2 }}
-							onClick={login}
+
 						>
 							Sign In
 						</Button>
@@ -142,7 +136,7 @@ export default function Login() {
 							sx={{ mt: 3, mb: 2 }}
 							onClick={loginWithGoogle}
 						>
-							loginWithGoogle
+							login With Google
 						</Button>
 						<Grid container>
 							<Grid item>

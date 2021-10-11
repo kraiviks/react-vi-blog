@@ -1,5 +1,5 @@
 import React from "react";
-import './Header.scss';
+// import './Header/Header.scss';
 import {NavLink} from 'react-router-dom'
 import {getAuth, signOut} from "firebase/auth";
 import {useAuthState} from 'react-firebase-hooks/auth';
@@ -11,8 +11,12 @@ import {AccountCircle} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Avatar from "@mui/material/Avatar";
 
-const Header = ({setOpenDrawer}) => {
+import useMediaQuery from '@mui/material/useMediaQuery';
 
+
+const Header = ({setOpenDrawer}) => {
+	const showHeaderButton = useMediaQuery('(min-width:600px)');
+	const sizeLogo = useMediaQuery('(min-width:600px)');
 	const auth = getAuth();
 
 	const [user, loading, error] = useAuthState(auth)
@@ -24,10 +28,11 @@ const Header = ({setOpenDrawer}) => {
 					<IconButton sx={{mr: 2}} onClick={setOpenDrawer}>
 						<MenuIcon/>
 					</IconButton>
-					<Typography variant="h5" component="div" sx={{flexGrow: 1}}>
+
+					{sizeLogo && <Typography variant="h5" component="div" sx={{flexGrow: 1}}>
 						Vi-blog
-					</Typography>
-					<nav className="nav">
+					</Typography>}
+					{showHeaderButton && <nav className="nav">
 						<ListItem button>
 							<Link color="inherit" underline="none" component={NavLink} to='/'
 								  sx={{padding: '5px 15px'}}>Home</Link>
@@ -53,6 +58,7 @@ const Header = ({setOpenDrawer}) => {
 							</>
 						) : null}
 					</nav>
+					}
 					{user ?
 						(<Box sx={{display: 'flex', alignItems:'center'}}>
 							<Typography variant='h5' component='div' sx={{ml: 5}}>{user.displayName}</Typography>

@@ -1,21 +1,22 @@
 import React, {useState, useEffect} from "react";
 import "./App.scss";
-import {Route, Switch, useRouteMatch} from "react-router-dom";
-import Header from "../Header/Header";
+import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
+import Header from "./Header";
 import {Container, Grid, Paper, Fab, CircularProgress} from "@mui/material";
-import LeftDrawer from "../LeftDrawer/LeftDrawer";
+import LeftDrawer from "./LeftDrawer";
 import {styled} from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
-import DialogAddItem from "../DialogAddItem/DialogAddItem";
+import DialogAddItem from "./DialogAddItem";
 import {getAuth} from "firebase/auth";
 import {useAuthState} from "react-firebase-hooks/auth";
-import db from '../../firebase';
+import db from '../firebase';
 import {collection, getDocs} from "firebase/firestore";
-import Login from "../Auth/Login";
-import Register from "../Auth/Register";
+import Login from "./Auth/Login";
+import Register from "./Auth/Register";
 import {ThemeProvider, createTheme} from "@mui/material";
-import Post from "../Post/Post";
-import FullPost from "../FullPost/FullPost";
+import Post from "./Post";
+import FullPost from "./FullPost";
+import Profile from "./Profile";
 
 const Item = styled(Paper)(({theme}) => ({
 	...theme.typography.body2,
@@ -32,6 +33,7 @@ const App = () => {
 	const [user, loading] = useAuthState(auth);
 	const [data, setData] = useState([]);
 	const [themeMode, setThemeMode] = useState('false');
+
 
 	//Theme to LocalStorage
 	const handleThemeToLocalStorage = () => {
@@ -66,7 +68,6 @@ const App = () => {
 		},
 	});
 
-	console.log(user);
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="app">
@@ -82,6 +83,9 @@ const App = () => {
 					<Switch>
 						<Route exact path='/'>
 							<div>Hello</div>
+						</Route>
+						<Route exact path='/profile'>
+							{user ? <Profile user={user}/> :  <Redirect to='/'/>}
 						</Route>
 						<Route path="/posts">
 							<Grid container spacing={2}>
@@ -116,6 +120,7 @@ const App = () => {
 				<DialogAddItem
 					openDialogAddItem={openDialogAddItem}
 					closeDialogAddItem={() => setOpenDialogAddItem(false)}
+					user={user}
 				/>
 			</div>
 		</ThemeProvider>)

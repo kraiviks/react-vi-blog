@@ -16,7 +16,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import React, {useState} from "react";
 import {getAuth, signOut} from "firebase/auth";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import Link from "@mui/material/Link";
 
 
@@ -25,6 +25,7 @@ const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStora
 	const [user, loading, error] = useAuthState(auth);
 
 	const drawerWidth = 240;
+
 
 
 	return (
@@ -45,26 +46,26 @@ const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStora
 			</Typography>
 			<Divider/>
 			<List>
-				<ListItem button>
+				<ListItem button onClick={closeDrawer}>
 					<ListItemIcon>
 						<HomeIcon/>
 					</ListItemIcon>
 					<Link color="inherit" underline="none" component={NavLink} to='/' sx={{width: '100%'}}><ListItemText primary={'Home'}/></Link>
 				</ListItem>
-				<ListItem button>
+				<ListItem button onClick={closeDrawer}>
 					<ListItemIcon>
 						<ArticleIcon/>
 					</ListItemIcon>
 					<Link color="inherit" underline="none" component={NavLink} to='/posts' sx={{width: '100%'}}><ListItemText primary={'Posts'}/></Link>
 				</ListItem>
-				{user ? (<ListItem button>
+				{user ? (<ListItem button onClick={closeDrawer}>
 					<ListItemIcon>
 						<AccountBox/>
 					</ListItemIcon>
 					<Link color="inherit" underline="none" component={NavLink} to='/profile' sx={{width: '100%'}}><ListItemText primary={'Профиль'}/></Link>
 				</ListItem>) : null}
 				{!themeMode ?
-					(<ListItem button onClick={handleThemeToLocalStorage}>
+					(<ListItem button onClick={handleThemeToLocalStorage} >
 						<ListItemIcon>
 							<DarkModeIcon/>
 						</ListItemIcon>
@@ -80,7 +81,8 @@ const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStora
 					<ListItemIcon>
 						<LogoutIcon/>
 					</ListItemIcon>
-					<ListItemText primary={'Выйти из профиля'}/>
+
+					<Link color="inherit" underline="none" component={NavLink} to='/' sx={{width: '100%'}}><ListItemText primary={'Выйти из профиля'}/></Link>
 				</ListItem>) : (<ListItem button>
 					<ListItemIcon>
 						<AccountBox/>

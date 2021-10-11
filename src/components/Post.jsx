@@ -10,14 +10,14 @@ const Post = ({title, content, createdAt, id}) => {
 		<Card sx={{ minWidth: 275 }}>
 			<CardContent>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-					{createdAt.toDate().toDateString()}
+					{createdAt ? createdAt.toDate().toDateString() : null}
 
 				</Typography>
 				<Typography variant="h5" component="div">
 					{title}
 				</Typography>
 				<Typography variant="body2">
-					{content.slice(0, count) + "..."}
+					{content ? content.slice(0, count) + "..." : null}
 				</Typography>
 			</CardContent>
 			<CardActions>
