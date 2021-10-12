@@ -21,7 +21,7 @@ const Post = ({title, content, createdAt, id}) => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Link component={NavLink} to={`/post/${id}`}>Learn More</Link>
+				<Link component={NavLink} to={`/react-aniviks/post/${id}`}>Learn More</Link>
 			</CardActions>
 		</Card>
 	)

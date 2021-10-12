@@ -73,13 +73,13 @@ const App = () => {
 				<Header setOpenDrawer={() => setOpenDrawer(true)} user={user}/>
 				<Container sx={{mt: "5rem"}}>
 					<Switch>
-						<Route exact path='/'>
+						<Route exact path='/react-aniviks/'>
 							<Home/>
 						</Route>
-						<Route exact path='/profile'>
-							{user ? <Profile user={user}/> :  <Redirect to='/'/>}
+						<Route exact path='/react-aniviks/profile'>
+							{user ? <Profile user={user}/> :  <Redirect to='/react-aniviks/'/>}
 						</Route>
-						<Route path="/posts">
+						<Route path="/react-aniviks/posts">
 							<Grid container spacing={2}>
 								{data.map((item) =>
 									<Grid item xs={12} key={item.id}>
@@ -99,13 +99,13 @@ const App = () => {
 								</Fab>
 							) : null}
 						</Route>
-						<Route exact path="/post/:id">
+						<Route exact path="/react-aniviks/post/:id">
 							<FullPost user={user} data={data}/>
 						</Route>
-						<Route path="/login">
+						<Route path="/react-aniviks/login">
 							<Login user={user}/>
 						</Route>
-						<Route path="/register">
+						<Route path="/react-aniviks/register">
 							<Register user={user}/>
 						</Route>
 					</Switch>

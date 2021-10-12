@@ -64,7 +64,7 @@ export default function Login({user}) {
 	};
 
 	if (user) {
-		return <Redirect to='/posts' />
+		return <Redirect to='/react-aniviks/posts' />
 	}
 
 	return (
@@ -137,7 +137,7 @@ export default function Login({user}) {
 						</Button>
 						<Grid container>
 							<Grid item>
-								<NavLink to='/register' variant="body2">Don't have an account? Sign Up</NavLink>
+								<NavLink to='/react-aniviks/register' variant="body2">Don't have an account? Sign Up</NavLink>
 							</Grid>
 						</Grid>
 					</Box>
