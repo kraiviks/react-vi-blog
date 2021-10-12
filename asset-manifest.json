@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-vi-blog/static/css/main.bf213c8e.chunk.css",
+    "main.js": "/react-vi-blog/static/js/main.f19465af.chunk.js",
+    "main.js.map": "/react-vi-blog/static/js/main.f19465af.chunk.js.map",
+    "runtime-main.js": "/react-vi-blog/static/js/runtime-main.a53f23ef.js",
+    "runtime-main.js.map": "/react-vi-blog/static/js/runtime-main.a53f23ef.js.map",
+    "static/js/2.4e243dd2.chunk.js": "/react-vi-blog/static/js/2.4e243dd2.chunk.js",
+    "static/js/2.4e243dd2.chunk.js.map": "/react-vi-blog/static/js/2.4e243dd2.chunk.js.map",
+    "static/js/3.7231f023.chunk.js": "/react-vi-blog/static/js/3.7231f023.chunk.js",
+    "static/js/3.7231f023.chunk.js.map": "/react-vi-blog/static/js/3.7231f023.chunk.js.map",
+    "index.html": "/react-vi-blog/index.html",
+    "static/css/main.bf213c8e.chunk.css.map": "/react-vi-blog/static/css/main.bf213c8e.chunk.css.map",
+    "static/js/2.4e243dd2.chunk.js.LICENSE.txt": "/react-vi-blog/static/js/2.4e243dd2.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/react-vi-blog/static/media/Avatar.798bc309.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a53f23ef.js",
+    "static/js/2.4e243dd2.chunk.js",
+    "static/css/main.bf213c8e.chunk.css",
+    "static/js/main.f19465af.chunk.js"
+  ]
+}
