@@ -14,8 +14,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import {NavLink, Redirect} from "react-router-dom";
-import {useAuthState} from "react-firebase-hooks/auth";
-import db from "../../firebase";
 
 function Copyright(props) {
 	return (
@@ -37,10 +35,9 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Login() {
+export default function Login({user}) {
 	const provider = new GoogleAuthProvider();
 	const auth = getAuth();
-	const [user, loading, error] = useAuthState(auth)
 
 	// const loginWithEmail = async () => {
 	//

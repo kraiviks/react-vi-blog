@@ -1,3 +1,71 @@
-.nav{
+.nav {
   display: flex;
+}
+
+.home {
+  background-color: #ffffff;
+  width: 300px;
+  height: 232px;
+  border-radius: 13px;
+  margin: 0 auto;
+  box-shadow: 1px 2px 3px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+
+  &-foto {
+    background-image: url(../assets/Avatar.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 140px;
+    height: 140px;
+    box-shadow: 1px 1px 30px rgb(79, 190, 172);
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    top: -75px;
+  }
+
+  &-name {
+    font-size: 21pt;
+    width: 140px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: -64px;
+  }
+
+  &-footer {
+    background-color: rgb(79, 190, 172);
+    width: 300px;
+    height: 78px;
+    position: relative;
+    top: -50px;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-button {
+      display: inline-block;
+      background-color: rgb(84, 87, 95);
+      color: white;
+      border: 1px solid white;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 11pt;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 15px;
+
+      &:hover {
+        background-color: white;
+        color: #33c1e3;
+        transition: 1s;
+      }
+    }
+  }
 }

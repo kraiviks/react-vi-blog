@@ -32,6 +32,8 @@ const DialogAddItem = ({openDialogAddItem, closeDialogAddItem, user}) => {
 			}
 		)
 		closeDialogAddItem();
+		setTitle('');
+		setContent('');
 	}
 
 	return (

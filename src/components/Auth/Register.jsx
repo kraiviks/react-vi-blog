@@ -13,9 +13,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {NavLink, Redirect} from "react-router-dom";
-import {useAuthState} from "react-firebase-hooks/auth";
-import {getAuth} from "firebase/auth";
-import {db} from '../../firebase';
 
 function Copyright(props) {
   return (
@@ -32,7 +29,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Register() {
+export default function Register({user}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -42,9 +39,6 @@ export default function Register() {
       password: data.get('password'),
     });
   };
-
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth)
 
   if (user) {
     return <Redirect to='/posts' />

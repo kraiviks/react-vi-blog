@@ -1,39 +1,30 @@
 import React, {useState, useEffect} from "react";
 import "./App.scss";
-import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./Header";
-import {Container, Grid, Paper, Fab, CircularProgress} from "@mui/material";
+import {Container, Grid, Fab, CircularProgress} from "@mui/material";
 import LeftDrawer from "./LeftDrawer";
-import {styled} from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import DialogAddItem from "./DialogAddItem";
 import {getAuth} from "firebase/auth";
 import {useAuthState} from "react-firebase-hooks/auth";
 import db from '../firebase';
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, doc, query, orderBy, onSnapshot} from "firebase/firestore";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import {ThemeProvider, createTheme} from "@mui/material";
 import Post from "./Post";
 import FullPost from "./FullPost";
 import Profile from "./Profile";
-
-const Item = styled(Paper)(({theme}) => ({
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: "center",
-	color: theme.palette.text.secondary,
-}));
+import Home from "./Home";
 
 const App = () => {
-	let match = useRouteMatch();
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [openDialogAddItem, setOpenDialogAddItem] = useState(false);
 	const auth = getAuth();
 	const [user, loading] = useAuthState(auth);
 	const [data, setData] = useState([]);
 	const [themeMode, setThemeMode] = useState('false');
-
 
 	//Theme to LocalStorage
 	const handleThemeToLocalStorage = () => {
@@ -44,17 +35,17 @@ const App = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const req = await getDocs(collection(db, 'posts'));
-			setData(req.docs.map(doc => {
-				const data = doc.data();
-				const id = doc.id;
-				return {id, ...data};
-			}));
-		}
+			const collectionRef = query(collection(db, 'posts'), orderBy("createdAt", "desc"));
+			const unsubscribe = await onSnapshot(collectionRef, (doc) => {
+				setData(doc.docs.map(doc => {
+					const data = doc.data();
+					const id = doc.id;
+					return {id, ...data};
+				}));
+			});}
 		fetchData();
 
-	}, [openDialogAddItem])
-
+	}, [])
 
 	if (loading) {
 		return <CircularProgress sx={{position: "fixed", top: '50%', left: '50%'}}/>;
@@ -77,12 +68,13 @@ const App = () => {
 					setOpenDialogAddItem={() => setOpenDialogAddItem(true)}
 					handleThemeToLocalStorage={handleThemeToLocalStorage}
 					themeMode={themeMode}
+					user={user}
 				/>
-				<Header setOpenDrawer={() => setOpenDrawer(true)}/>
+				<Header setOpenDrawer={() => setOpenDrawer(true)} user={user}/>
 				<Container sx={{mt: "5rem"}}>
 					<Switch>
 						<Route exact path='/'>
-							<div>Hello</div>
+							<Home/>
 						</Route>
 						<Route exact path='/profile'>
 							{user ? <Profile user={user}/> :  <Redirect to='/'/>}
@@ -107,13 +99,14 @@ const App = () => {
 								</Fab>
 							) : null}
 						</Route>
-						<Route exact path="/post/:id"
-							   render={({match}) => (<FullPost user={user} post={data.find(p => p.id === match.params.id)}/>)}/>
+						<Route exact path="/post/:id">
+							<FullPost user={user} data={data}/>
+						</Route>
 						<Route path="/login">
-							<Login/>
+							<Login user={user}/>
 						</Route>
 						<Route path="/register">
-							<Register/>
+							<Register user={user}/>
 						</Route>
 					</Switch>
 				</Container>

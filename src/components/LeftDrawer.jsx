@@ -1,3 +1,4 @@
+import React from "react";
 import {AccountBox} from "@mui/icons-material";
 import {
 	Divider,
@@ -13,21 +14,15 @@ import ArticleIcon from '@mui/icons-material/Article';
 import HomeIcon from '@mui/icons-material/Home';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import React, {useState} from "react";
+
 import {getAuth, signOut} from "firebase/auth";
-import {useAuthState} from "react-firebase-hooks/auth";
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import Link from "@mui/material/Link";
 
 
-const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStorage}) => {
-	const auth = getAuth();
-	const [user, loading, error] = useAuthState(auth);
-
+const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStorage, user}) => {
 	const drawerWidth = 240;
-
-
-
+	const auth = getAuth();
 	return (
 		<Drawer
 			anchor="left"

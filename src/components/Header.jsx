@@ -1,25 +1,19 @@
 import React from "react";
-// import './Header/Header.scss';
 import {NavLink} from 'react-router-dom'
-import {getAuth, signOut} from "firebase/auth";
-import {useAuthState} from 'react-firebase-hooks/auth';
+
 
 import {
-	AppBar, Button, IconButton, ListItem, Toolbar, Typography, Box, Link
+	AppBar, IconButton, ListItem, Toolbar, Typography, Box, Link
 } from "@mui/material";
-import {AccountCircle} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Avatar from "@mui/material/Avatar";
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-const Header = ({setOpenDrawer}) => {
+const Header = ({setOpenDrawer, user}) => {
 	const showHeaderButton = useMediaQuery('(min-width:600px)');
 	const sizeLogo = useMediaQuery('(min-width:600px)');
-	const auth = getAuth();
-
-	const [user, loading, error] = useAuthState(auth)
 
 	return (
 		<Box sx={{flexGrow: 1}}>
