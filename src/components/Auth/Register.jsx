@@ -41,7 +41,7 @@ export default function Register({user}) {
   };
 
   if (user) {
-    return <Redirect to='/react-vi-blog/posts' />
+    return <Redirect to='/posts' />
   }
 
   return (
@@ -123,7 +123,7 @@ export default function Register({user}) {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <NavLink to='/react-vi-blog/login' variant="body2">Already have an account? Sign in</NavLink>
+                <NavLink to='/login' variant="body2">Already have an account? Sign in</NavLink>
               </Grid>
             </Grid>
           </Box>

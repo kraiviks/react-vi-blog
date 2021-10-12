@@ -45,19 +45,19 @@ const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStora
 					<ListItemIcon>
 						<HomeIcon/>
 					</ListItemIcon>
-					<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/' sx={{width: '100%'}}><ListItemText primary={'Home'}/></Link>
+					<Link color="inherit" underline="none" component={NavLink} to='/' sx={{width: '100%'}}><ListItemText primary={'Home'}/></Link>
 				</ListItem>
 				<ListItem button onClick={closeDrawer}>
 					<ListItemIcon>
 						<ArticleIcon/>
 					</ListItemIcon>
-					<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/posts' sx={{width: '100%'}}><ListItemText primary={'Posts'}/></Link>
+					<Link color="inherit" underline="none" component={NavLink} to='/posts' sx={{width: '100%'}}><ListItemText primary={'Posts'}/></Link>
 				</ListItem>
 				{user ? (<ListItem button onClick={closeDrawer}>
 					<ListItemIcon>
 						<AccountBox/>
 					</ListItemIcon>
-					<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/profile' sx={{width: '100%'}}><ListItemText primary={'Профиль'}/></Link>
+					<Link color="inherit" underline="none" component={NavLink} to='/profile' sx={{width: '100%'}}><ListItemText primary={'Профиль'}/></Link>
 				</ListItem>) : null}
 				{!themeMode ?
 					(<ListItem button onClick={handleThemeToLocalStorage} >
@@ -77,12 +77,12 @@ const LeftDrawer = ({openDrawer, closeDrawer, themeMode, handleThemeToLocalStora
 						<LogoutIcon/>
 					</ListItemIcon>
 
-					<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/' sx={{width: '100%'}}><ListItemText primary={'Выйти из профиля'}/></Link>
+					<Link color="inherit" underline="none" component={NavLink} to='/' sx={{width: '100%'}}><ListItemText primary={'Выйти из профиля'}/></Link>
 				</ListItem>) : (<ListItem button>
 					<ListItemIcon>
 						<AccountBox/>
 					</ListItemIcon>
-					<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/login' sx={{width: '100%'}}><ListItemText primary={'Log in'}/></Link>
+					<Link color="inherit" underline="none" component={NavLink} to='/login' sx={{width: '100%'}}><ListItemText primary={'Log in'}/></Link>
 				</ListItem>)}
 			</List>
 		</Drawer>

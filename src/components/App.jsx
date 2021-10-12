@@ -71,15 +71,15 @@ const App = () => {
 					user={user}
 				/>
 				<Header setOpenDrawer={() => setOpenDrawer(true)} user={user}/>
-				<Container sx={{mt: "5rem"}}>
+				<Container sx={{mt: "5rem", display:'flex', justifyContent:'center', alignItems: 'center'}}>
 					<Switch>
-						<Route exact path='/react-vi-blog/'>
+						<Route exact path='/'>
 							<Home/>
 						</Route>
-						<Route exact path='/react-vi-blog/profile'>
-							{user ? <Profile user={user}/> :  <Redirect to='/react-vi-blog/'/>}
+						<Route exact path='/profile'>
+							{user ? <Profile user={user}/> :  <Redirect to='/'/>}
 						</Route>
-						<Route path="/react-vi-blog/posts">
+						<Route path="/posts">
 							<Grid container spacing={2}>
 								{data.map((item) =>
 									<Grid item xs={12} key={item.id}>
@@ -99,13 +99,13 @@ const App = () => {
 								</Fab>
 							) : null}
 						</Route>
-						<Route exact path="/react-vi-blog/post/:id">
+						<Route exact path="/post/:id">
 							<FullPost user={user} data={data}/>
 						</Route>
-						<Route path="/react-vi-blog/login">
+						<Route path="/login">
 							<Login user={user}/>
 						</Route>
-						<Route path="/react-vi-blog/register">
+						<Route path="/register">
 							<Register user={user}/>
 						</Route>
 					</Switch>
