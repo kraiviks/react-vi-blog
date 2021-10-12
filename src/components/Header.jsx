@@ -28,26 +28,26 @@ const Header = ({setOpenDrawer, user}) => {
 					</Typography>}
 					{showHeaderButton && <nav className="nav">
 						<ListItem button>
-							<Link color="inherit" underline="none" component={NavLink} to='/react-aniviks/'
+							<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/'
 								  sx={{padding: '5px 15px'}}>Home</Link>
 						</ListItem>
 						<ListItem button>
-							<Link color="inherit" underline="none" component={NavLink} to='/react-aniviks/posts'
+							<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/posts'
 								  sx={{padding: '5px 15px'}}>Posts</Link>
 						</ListItem>
 						{user ? (<ListItem button>
-							<Link color="inherit" underline="none" component={NavLink} to='/react-aniviks/profile'
+							<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/profile'
 								  sx={{padding: '5px 15px'}}>Profile</Link>
 						</ListItem>) : null}
 						{!user ? (
 							<>
 								<ListItem button>
-									<Link color="inherit" underline="none" component={NavLink} to='/react-aniviks/login'
+									<Link color="inherit" underline="none" component={NavLink} to='/react-vi-blog/login'
 										  sx={{padding: '5px 15px'}}>Login</Link>
 								</ListItem>
 								<ListItem button>
 									<Link color="inherit" underline="none" component={NavLink}
-										  to='/react-aniviks/register' sx={{padding: '5px 15px'}}>Register</Link>
+										  to='/react-vi-blog/register' sx={{padding: '5px 15px'}}>Register</Link>
 								</ListItem>
 							</>
 						) : null}

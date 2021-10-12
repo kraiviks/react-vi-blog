@@ -31,12 +31,12 @@ const FullPost = ({data, user}) => {
 			title: updateTitle
 		});
 		console.log('update')
-		return history.push('/react-aniviks/posts');
+		return history.push('/react-vi-blog/posts');
 
 	}
 
 	const deletePost = async () => {
-		history.push('/react-aniviks/posts');
+		history.push('/react-vi-blog/posts');
 		await deleteDoc(doc(db, "posts", id));
 	}
 
