@@ -69,26 +69,30 @@ const FullPost = ({data, user}) => {
 
 
 			</CardContent>
-			{user && handleEdit ? (
-					<CardActions>
-						<IconButton onClick={saveEditPost}>
-							<SaveIcon/>
-						</IconButton>
-						<IconButton onClick={deletePost}>
-							<DeleteIcon/>
-						</IconButton>
-					</CardActions>
+			{
+				user ? <>
+					{ handleEdit ? (
+						<CardActions>
+							<IconButton onClick={saveEditPost}>
+								<SaveIcon/>
+							</IconButton>
+							<IconButton onClick={deletePost}>
+								<DeleteIcon/>
+							</IconButton>
+						</CardActions>
 
-			) : (
-				<CardActions>
-					<IconButton onClick={()=>setHandleEdit(true)}>
-						<EditIcon/>
-					</IconButton>
-					<IconButton onClick={deletePost}>
-						<DeleteIcon/>
-					</IconButton>
-				</CardActions>
-			)}
+					) : (
+						<CardActions>
+							<IconButton onClick={()=>setHandleEdit(true)}>
+								<EditIcon/>
+							</IconButton>
+							<IconButton onClick={deletePost}>
+								<DeleteIcon/>
+							</IconButton>
+						</CardActions>
+					)}
+				</> : null
+			}
 		</Card>
 	)
 }
