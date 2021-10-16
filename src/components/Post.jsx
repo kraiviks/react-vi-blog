@@ -16,7 +16,7 @@ const Post = ({title, content, createdAt, id}) => {
 				<Typography variant="h5" component="div">
 					{title}
 				</Typography>
-				<Typography variant="body2" style={{whiteSpace: 'pre'}}>
+				<Typography variant="body2" style={{whiteSpace: 'pre-line'}}>
 						{content ? content.slice(0, count) + "..." : null}
 				</Typography>
 			</CardContent>

@@ -59,7 +59,7 @@ const FullPost = ({data, user}) => {
 							<Typography variant="h5" component="div">
 								{post ? post.title : null}
 							</Typography>
-							<Typography variant="body2" style={{whiteSpace: 'pre'}}>
+							<Typography variant="body2" style={{whiteSpace: 'pre-line'}}>
 								{post ? post.content : null}
 							</Typography>
 						</>
