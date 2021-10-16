@@ -100,7 +100,11 @@ const App = () => {
 							) : null}
 						</Route>
 						<Route exact path="/post/:id">
-							<FullPost user={user} data={data}/>
+							<Grid container spacing={2}>
+								<Grid item xs={12}>
+									<FullPost user={user} data={data}/>
+								</Grid>
+							</Grid>
 						</Route>
 						<Route path="/login">
 							<Login user={user}/>

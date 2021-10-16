@@ -48,7 +48,7 @@ const FullPost = ({data, user}) => {
 					(
 						<>
 							<TextField id="outlined-basic" label="Edit Title" variant="outlined" value={updateTitle} onChange={handleTitle}/>
-							<TextField id="outlined-basic" label="Edit Content" variant="outlined" value={updateContent} onChange={handleContent}/>
+							<TextField id="outlined-basic" multiline  rows={12} label="Edit Content" variant="outlined" value={updateContent} onChange={handleContent}/>
 						</>
 					)
 					: (
@@ -59,7 +59,7 @@ const FullPost = ({data, user}) => {
 							<Typography variant="h5" component="div">
 								{post ? post.title : null}
 							</Typography>
-							<Typography variant="body2">
+							<Typography variant="body2" style={{whiteSpace: 'pre'}}>
 								{post ? post.content : null}
 							</Typography>
 						</>
