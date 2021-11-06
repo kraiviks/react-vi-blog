@@ -38,6 +38,7 @@ const App = () => {
 				collection(db, "posts"),
 				orderBy("createdAt", "desc")
 			);
+			// eslint-disable-next-line no-unused-vars
 			const unsubscribe = await onSnapshot(collectionRef, (doc) => {
 				setData(
 					doc.docs.map((doc) => {
