@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
 	AppBar,
@@ -10,7 +10,10 @@ import {
 	Box,
 	Link,
 	createStyles,
+	ListItemIcon,
 } from "@mui/material";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Avatar from "@mui/material/Avatar";
@@ -32,9 +35,18 @@ const styles = createStyles({
 			display: "none",
 		},
 	},
+	themeMod: {
+		display: "flex",
+		justifyContent: "center",
+	},
 });
 
-const Header = ({ setOpenDrawer, user }) => {
+const Header = ({
+	setOpenDrawer,
+	user,
+	themeMode,
+	handleThemeToLocalStorage,
+}) => {
 	const showHeaderButton = useMediaQuery("(min-width:600px)");
 	const sizeLogo = useMediaQuery("(min-width:600px)");
 	const auth = getAuth();
@@ -81,17 +93,38 @@ const Header = ({ setOpenDrawer, user }) => {
 								</Link>
 							</ListItem>
 							{user ? (
-								<ListItem button>
-									<Link
-										color="inherit"
-										underline="none"
-										component={NavLink}
-										to="/profile"
-										sx={{ padding: "5px 15px" }}
-									>
-										Profile
-									</Link>
-								</ListItem>
+								<>
+									<ListItem button>
+										<Link
+											color="inherit"
+											underline="none"
+											component={NavLink}
+											to="/profile"
+											sx={{ padding: "5px 15px" }}
+										>
+											Profile
+										</Link>
+									</ListItem>
+									{!themeMode ? (
+										<ListItem
+											button
+											onClick={handleThemeToLocalStorage}
+										>
+											<ListItemIcon sx={styles.themeMod}>
+												<DarkModeIcon />
+											</ListItemIcon>
+										</ListItem>
+									) : (
+										<ListItem
+											button
+											onClick={handleThemeToLocalStorage}
+										>
+											<ListItemIcon sx={styles.themeMod}>
+												<LightModeIcon />
+											</ListItemIcon>
+										</ListItem>
+									)}
+								</>
 							) : null}
 							{!user ? (
 								<>

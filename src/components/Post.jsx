@@ -10,7 +10,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 const Post = ({ title, content, createdAt, id }) => {
-	const count = 500;
+	const count = 50;
 	return (
 		<Card sx={{ minWidth: 275 }}>
 			<CardContent>
