@@ -6,7 +6,7 @@ const Home = () => {
 			<div className="home-foto"></div>
 			<p className="home-name">Serhii Kostiv</p>
 			<footer className="home-footer">
-				<a href="https://kraiviks.github.io/serhii_k" className="home-footer-button">Portfolio</a>
+				<a href="https://kraiviks.github.io/k-portfolio" className="home-footer-button">Portfolio</a>
 			</footer>
 		</div>
 	)
